@@ -1,0 +1,22 @@
+﻿ @model TestPdf.Model.InvoiceModel;
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Invoice #@Model.InvoiceNumber</h1>
+    <p>Date: @Model.Date.ToShortDateString()</p>
+    <p>Customer: @Model.Customer</p>
+    <ul>
+        @foreach (var item in Model.Items)
+        {
+            <li>@item.Name - @item.Quantity × @item.Price = @(item.Quantity* item.Price)</li>
+        }
+    </ul>
+    <p><strong>Total:</strong> @Model.Total</p>
+</body>
+</html>
